@@ -9,9 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Implementation of the EmployeeDAO interface.
+ * Data Access Object for employees.
  */
-public class EmployeeDAO implements IEmployeeDAO {
+public class EmployeeDAO {
 
     /**
      * Adds a new employee to the database.
