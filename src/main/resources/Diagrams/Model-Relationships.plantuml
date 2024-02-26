@@ -1,0 +1,45 @@
+@startuml
+!theme plain
+
+class Employee {
+    - int id
+    - String name
+    - String email
+    - String password
+}
+
+class Customer {
+    - int id
+    - String name
+    - String email
+    - String phoneNumber
+}
+
+class Appointment {
+    - int id
+    - int customerId
+    - int employeeId
+    - LocalDateTime startTime
+    - LocalDateTime endTime
+    - String description
+}
+
+class Treatment {
+    - int id
+    - String name
+    - int duration
+    - String description
+}
+
+class Log {
+    - int id
+    - String action
+    - LocalDateTime timestamp
+    - String details
+}
+
+Customer "1" -- "0..*" Appointment : has >
+Employee "1" -- "0..*" Appointment : performs >
+Appointment "0..*" -- "1" Treatment : includes >
+
+@enduml

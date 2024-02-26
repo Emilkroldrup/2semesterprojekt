@@ -1,0 +1,19 @@
+@startuml
+!theme plain
+
+actor User
+participant "UI Controller" as UI
+participant "AppointmentService" as Service
+participant "AppointmentDAO" as DAO
+participant "Database" as DB
+
+User -> UI : createAppointment(details)
+UI -> Service : createNewAppointment(details)
+Service -> DAO : addAppointment(appointment)
+DAO -> DB : insert(appointment)
+DB -> DAO : confirmation
+DAO -> Service : appointmentCreated
+Service -> UI : creationSuccess
+UI -> User : displayConfirmation
+
+@enduml

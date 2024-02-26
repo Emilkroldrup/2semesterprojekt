@@ -1,0 +1,26 @@
+@startuml
+!theme plain
+
+package "Model" {
+    class Employee
+    class Customer
+    class Appointment
+    class Treatment
+    class Log
+}
+
+package "DAO" {
+    class EmployeeDAO
+    class CustomerDAO
+    class AppointmentDAO
+    class TreatmentDAO
+    class LogDAO
+}
+
+EmployeeDAO ..> Employee : accesses
+CustomerDAO ..> Customer : accesses
+AppointmentDAO ..> Appointment : accesses
+TreatmentDAO ..> Treatment : accesses
+LogDAO ..> Log : accesses
+
+@enduml
