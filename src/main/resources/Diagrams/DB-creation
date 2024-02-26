@@ -1,0 +1,104 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Vært: 127.0.0.1:3306
+-- Genereringstid: 26. 02 2024 kl. 10:00:25
+-- Serverversion: 8.2.0
+-- PHP-version: 8.2.13
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `hairsalonmanagementdb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `appointments`
+--
+
+DROP TABLE IF EXISTS `appointments`;
+CREATE TABLE IF NOT EXISTS `appointments` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `customerId` int NOT NULL,
+  `employeeId` int NOT NULL,
+  `startTime` datetime NOT NULL,
+  `endTime` datetime NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `customerId` (`customerId`),
+  KEY `employeeId` (`employeeId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `customers`
+--
+
+DROP TABLE IF EXISTS `customers`;
+CREATE TABLE IF NOT EXISTS `customers` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phoneNumber` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `customer_email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `employees`
+--
+
+DROP TABLE IF EXISTS `employees`;
+CREATE TABLE IF NOT EXISTS `employees` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `treatments`
+--
+
+DROP TABLE IF EXISTS `treatments`;
+CREATE TABLE IF NOT EXISTS `treatments` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `duration` int NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Begrænsninger for dumpede tabeller
+--
+
+--
+-- Begrænsninger for tabel `appointments`
+--
+ALTER TABLE `appointments`
+  ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customers` (`id`),
+  ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`employeeId`) REFERENCES `employees` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
