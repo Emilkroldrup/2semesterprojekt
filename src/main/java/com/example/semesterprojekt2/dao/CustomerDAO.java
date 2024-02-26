@@ -1,12 +1,14 @@
 package com.example.semesterprojekt2.dao;
 
 import com.example.semesterprojekt2.model.Customer;
+import com.example.semesterprojekt2.model.Log;
 import com.example.semesterprojekt2.util.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,12 @@ public class CustomerDAO {
             pstmt.setString(3, customer.getPhoneNumber());
             pstmt.executeUpdate();
         }
+        Log logEntry = new Log(
+            "Add Customer",
+            LocalDateTime.now(),
+            "Added customer: " + customer.getName()
+        );
+        new LogDAO().addLogEntry(logEntry);
     }
 
     /**

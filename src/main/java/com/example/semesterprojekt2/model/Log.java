@@ -9,8 +9,7 @@ public class Log {
     private LocalDateTime timestamp;
     private String details;
 
-    public Log(int id, String action, LocalDateTime timestamp, String details) {
-        this.id = id;
+    public Log(String action, LocalDateTime timestamp, String details) {
         this.action = action;
         this.timestamp = timestamp;
         this.details = details;
