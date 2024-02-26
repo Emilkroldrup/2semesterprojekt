@@ -1,0 +1,54 @@
+HairSalonManagementDB
+    /tables
+        - Employees
+            - id (PK, int, auto_increment) // Unique identifier for each employee
+            - name (varchar) // Employee's name
+            - email (varchar, unique) // Employee's email, unique to ensure no duplicate entries
+            - password (varchar) // Employee's password
+        - Customers
+            - id (PK, int, auto_increment) // Unique identifier for each customer
+            - name (varchar) // Customer's name
+            - email (varchar, unique) // Customer's email, unique to ensure no duplicate entries
+            - phoneNumber (varchar) // Customer's phone number
+        - Appointments
+            - id (PK, int, auto_increment) // Unique identifier for each appointment
+            - customerId (FK, int, references Customers(id)) // Links appointment to a customer
+            - employeeId (FK, int, references Employees(id)) // Links appointment to an employee
+            - startTime (datetime) // Start time of the appointment
+            - endTime (datetime) // End time of the appointment
+            - description (text) // Description of the appointment
+        - Treatments
+            - id (PK, int, auto_increment) // Unique identifier for each treatment
+            - name (varchar) // Name of the treatment
+            - duration (int) // Duration of the treatment in minutes
+            - description (text) // Description of the treatment
+            
+
+            //This one is maybe maybe
+        - LogEntries
+            - id (PK, int, auto_increment) // Unique identifier for each log entry
+            - action (varchar) // Action performed
+            - timestamp (datetime) // When the action was logged
+            - details (text) // Additional details about the action
+
+    /indices
+        - Employees_email_idx (on Employees(email)) // Index on email for faster lookup
+        - Appointments_customerId_idx (on Appointments(customerId)) // Index to quickly find appointments by customer
+        - Appointments_employeeId_idx (on Appointments(employeeId)) // Index to quickly find appointments by employee
+
+    /constraints
+        - Appointments_customerId_fk (foreign key (customerId) references Customers(id)) // Ensures integrity between Appointments and Customers
+        - Appointments_employeeId_fk (foreign key (employeeId) references Employees(id)) // Ensures integrity between Appointments and Employees
+
+
+
+Explanations:
+PK (Primary Key): Uniquely identifies each record within a table. Auto-incremented to ensure uniqueness.
+
+FK (Foreign Key): Establishes a relationship between two tables. For instance, customerId in the Appointments table references the id in the Customers table, creating a link between an appointment and its respective customer.
+
+Indices: Created on frequently searched columns (like email in Employees) or columns used in joins (like customerId and employeeId in Appointments) to speed up query performance.
+
+Constraints: Ensure data integrity across related tables, e.g., an appointment cannot exist without a valid customer and employee.
+
+This should be ensuring clear relationships between entities and efficient data retrieval through indices and constraints. The database setup is made following the application's requirements for managing employees, customers, appointments, and treatments effectively, // maybe with log entries for auditing or debugging purposes.
