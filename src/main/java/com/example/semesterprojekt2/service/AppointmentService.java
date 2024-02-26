@@ -16,34 +16,6 @@ public class AppointmentService {
         this.appointmentDAO = new AppointmentDAO();
     }
 
-    /**
-     * Creates a new appointment, ensuring no scheduling conflicts.
-     * 
-     * @param appointment The appointment to add.
-     * @return boolean indicating success or failure.
-     */
-    public boolean createAppointment(Appointment appointment) {
-    // Check if appointment time is within business hours (9-16) and not during break time (11-12)
-    if (!isWithinBusinessHours(appointment.getStartTime(), appointment.getEndTime())) {
-        return false;
-    }
-
-    // Check if the appointment duration is valid (15, 30, 45, or 60 minutes)
-    long durationMinutes = java.time.Duration.between(appointment.getStartTime(), appointment.getEndTime()).toMinutes();
-    if (!isValidDuration(durationMinutes)) {
-        return false;
-    }
-
-    // Check for overlapping appointments
-    if (appointmentDAO.hasOverlappingAppointment(appointment.getStartTime(), appointment.getEndTime())) {
-        return false;
-    }
-
-    // If all checks pass, save the appointment
-    appointmentDAO.addAppointment(appointment);
-    return true;
-    }
-
     private boolean isWithinBusinessHours(LocalDateTime start, LocalDateTime end) {
         // Define business hours and break time
         LocalTime businessStart = LocalTime.of(9, 0);
@@ -59,6 +31,39 @@ public class AppointmentService {
 
     private boolean isValidDuration(long duration) {
         return duration == 15 || duration == 30 || duration == 45 || duration == 60;
+    }
+
+    /**
+     * Creates a new appointment, ensuring no scheduling conflicts.
+     * 
+     * @param appointment The appointment to add.
+     * @return boolean indicating success or failure.
+     */
+    public boolean createAppointment(Appointment appointment) {
+        try {
+            // Check if appointment time is within business hours (9-16) and not during break time (11-12)
+            if (!isWithinBusinessHours(appointment.getStartTime(), appointment.getEndTime())) {
+                return false;
+            }
+    
+            // Check if the appointment duration is valid (15, 30, 45, or 60 minutes)
+            long durationMinutes = java.time.Duration.between(appointment.getStartTime(), appointment.getEndTime()).toMinutes();
+            if (!isValidDuration(durationMinutes)) {
+                return false;
+            }
+    
+            // Check for overlapping appointments
+            if (appointmentDAO.hasOverlappingAppointment(appointment.getStartTime(), appointment.getEndTime())) {
+                return false;
+            }
+    
+            // If all checks pass, save the appointment
+            appointmentDAO.addAppointment(appointment);
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /**
@@ -79,15 +84,16 @@ public class AppointmentService {
      * @return boolean indicating success or failure.
      */
     public boolean updateAppointment(Appointment appointment) {
-    try {
-        if (!isWithinBusinessHours(appointment.getStartTime(), appointment.getEndTime()) ||
-            !isValidDuration(java.time.Duration.between(appointment.getStartTime(), appointment.getEndTime()).toMinutes()) ||
-            appointmentDAO.hasOverlappingAppointmentExcludingSelf(appointment.getId(), appointment.getStartTime(), appointment.getEndTime())) {
-            return false;
-        }
+        try {
+            // Similar validation as createAppointment, but exclude the current appointment in overlap check
+            if (!isWithinBusinessHours(appointment.getStartTime(), appointment.getEndTime()) ||
+                !isValidDuration(java.time.Duration.between(appointment.getStartTime(), appointment.getEndTime()).toMinutes()) ||
+                appointmentDAO.hasOverlappingAppointmentExcludingSelf(appointment.getId(), appointment.getStartTime(), appointment.getEndTime())) {
+                return false;
+            }
     
-        appointmentDAO.updateAppointment(appointment);
-        return true;
+            appointmentDAO.updateAppointment(appointment);
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -100,15 +106,16 @@ public class AppointmentService {
      * @param id The ID of the appointment to cancel.
      * @return boolean indicating success or failure.
      */
-   public boolean cancelAppointment(int id) {
-    try {
-        appointmentDAO.deleteAppointment(id);
-        return true;
-    } catch (SQLException e) {
-        e.printStackTrace();
-        return false;
+    public boolean cancelAppointment(int id) {
+        try {
+            appointmentDAO.deleteAppointment(id);
+            // Optionally, log this action or send a notification
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
-}
 
     /**
      * Lists all appointments within a given time range.
@@ -121,6 +128,4 @@ public class AppointmentService {
         // Use AppointmentDAO to find appointments within the specified range
         return null;
     }
-
-    // Additional methods as needed
 }
