@@ -2,6 +2,8 @@ package com.example.semesterprojekt2.service;
 
 import com.example.semesterprojekt2.dao.AppointmentDAO;
 import com.example.semesterprojekt2.model.Appointment;
+
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
@@ -77,7 +79,7 @@ public class AppointmentService {
      * @return boolean indicating success or failure.
      */
     public boolean updateAppointment(Appointment appointment) {
-        // Similar validation as createAppointment, but exclude the current appointment in overlap check
+    try {
         if (!isWithinBusinessHours(appointment.getStartTime(), appointment.getEndTime()) ||
             !isValidDuration(java.time.Duration.between(appointment.getStartTime(), appointment.getEndTime()).toMinutes()) ||
             appointmentDAO.hasOverlappingAppointmentExcludingSelf(appointment.getId(), appointment.getStartTime(), appointment.getEndTime())) {
@@ -86,6 +88,10 @@ public class AppointmentService {
     
         appointmentDAO.updateAppointment(appointment);
         return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /**
@@ -94,12 +100,15 @@ public class AppointmentService {
      * @param id The ID of the appointment to cancel.
      * @return boolean indicating success or failure.
      */
-    public boolean cancelAppointment(int id) {
-        // Directly call DAO to delete the appointment
+   public boolean cancelAppointment(int id) {
+    try {
         appointmentDAO.deleteAppointment(id);
-        // Optionally, log this action or send a notification
         return true;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
     }
+}
 
     /**
      * Lists all appointments within a given time range.
