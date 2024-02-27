@@ -156,5 +156,35 @@ public class AppointmentDAO {
             pstmt.executeUpdate();
         }
     }
-    
+
+    /**
+     * Retrieves all appointments within a given time range.
+     * 
+     * @param start The start of the time range.
+     * @param end The end of the time range.
+     * @return A list of appointments within the time range.
+     * @throws SQLException if there is an error during database access.
+     */
+    public List<Appointment> getAppointmentsInRange(LocalDateTime start, LocalDateTime end) throws SQLException {
+        List<Appointment> appointments = new ArrayList<>();
+        String sql = "SELECT * FROM appointments WHERE startTime >= ? AND endTime <= ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setObject(1, start);
+            pstmt.setObject(2, end);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    appointments.add(new Appointment(
+                            rs.getInt("id"),
+                            rs.getInt("customerId"),
+                            rs.getInt("employeeId"),
+                            rs.getObject("startTime", LocalDateTime.class),
+                            rs.getObject("endTime", LocalDateTime.class),
+                            rs.getString("description")
+                    ));
+                }
+            }
+        }
+        return appointments;  
+    }
 }
