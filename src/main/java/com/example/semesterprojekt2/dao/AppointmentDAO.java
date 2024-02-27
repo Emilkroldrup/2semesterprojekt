@@ -106,6 +106,14 @@ public class AppointmentDAO {
         }
     }
 
+    /**
+     * Checks if there are any overlapping appointments.
+     * 
+     * @param startTime The start time of the appointment.
+     * @param endTime The end time of the appointment.
+     * @return true if there are overlapping appointments, false otherwise.
+     * @throws SQLException if there is an error during database access.
+     */
     public boolean hasOverlappingAppointment(LocalDateTime startTime, LocalDateTime endTime) throws SQLException {
         String sql = "SELECT COUNT(*) FROM appointments WHERE (startTime < ? AND endTime > ?) OR (startTime < ? AND endTime > ?) OR (startTime >= ? AND endTime <= ?)";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -125,6 +133,15 @@ public class AppointmentDAO {
         return false;
     }
 
+    /**
+     * Checks if there are any overlapping appointments excluding the specified appointment.
+     * 
+     * @param appointmentId The ID of the appointment to exclude.
+     * @param startTime The start time of the appointment.
+     * @param endTime The end time of the appointment.
+     * @return true if there are overlapping appointments, false otherwise.
+     * @throws SQLException if there is an error during database access.
+     */
     public boolean hasOverlappingAppointmentExcludingSelf(int appointmentId, LocalDateTime startTime, LocalDateTime endTime) throws SQLException {
         String sql = "SELECT COUNT(*) FROM appointments WHERE id != ? AND ((startTime < ? AND endTime > ?) OR (startTime < ? AND endTime > ?) OR (startTime >= ? AND endTime <= ?))";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -145,6 +162,12 @@ public class AppointmentDAO {
         return false;
     }
 
+    /**
+     * Updates an existing appointment in the database.
+     * 
+     * @param appointment The appointment to update.
+     * @throws SQLException if there is an error during database access.
+     */
     public void updateAppointment(Appointment appointment) throws SQLException {
         String sql = "UPDATE appointments SET customerId = ?, employeeId = ?, startTime = ?, endTime = ?, description = ?, cancelled = ? WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -183,7 +206,8 @@ public class AppointmentDAO {
                             rs.getInt("employeeId"),
                             rs.getObject("startTime", LocalDateTime.class),
                             rs.getObject("endTime", LocalDateTime.class),
-                            rs.getString("description")
+                            rs.getString("description"),
+                            rs.getBoolean("cancelled")
                     ));
                 }
             }
