@@ -92,7 +92,7 @@ public class AppointmentDAO {
     }
 
     /**
-     * Deletes an appointment from the database by its ID.
+     * Cancel an appointment from the database by its ID.
      * 
      * @param id The ID of the appointment to delete.
      * @throws SQLException if there is an error during database access.
