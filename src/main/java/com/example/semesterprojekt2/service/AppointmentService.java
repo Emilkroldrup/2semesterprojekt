@@ -66,15 +66,19 @@ public class AppointmentService {
         }
     }
 
-    /**
+   /**
      * Retrieves an appointment by its ID.
      * 
      * @param id The ID of the appointment.
      * @return The requested Appointment, or null if not found.
      */
     public Appointment getAppointmentById(int id) {
-        // Use AppointmentDAO to retrieve the appointment
-        return null;
+        try {
+            return appointmentDAO.getAppointmentById(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
@@ -108,7 +112,7 @@ public class AppointmentService {
      */
     public boolean cancelAppointment(int id) {
         try {
-            appointmentDAO.deleteAppointment(id);
+            appointmentDAO.denyAppointment(id);
             // Optionally, log this action or send a notification
             return true;
         } catch (SQLException e) {
@@ -125,7 +129,12 @@ public class AppointmentService {
      * @return A list of appointments within the time range.
      */
     public List<Appointment> getAppointmentsInRange(LocalDateTime start, LocalDateTime end) {
-        // Use AppointmentDAO to find appointments within the specified range
-        return null;
+        try {
+            // Use AppointmentDAO to find appointments within the specified range
+            return appointmentDAO.getAppointmentsInRange(start, end);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
