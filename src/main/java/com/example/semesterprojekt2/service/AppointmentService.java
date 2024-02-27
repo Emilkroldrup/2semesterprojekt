@@ -112,7 +112,7 @@ public class AppointmentService {
      */
     public boolean cancelAppointment(int id) {
         try {
-            appointmentDAO.deleteAppointment(id);
+            appointmentDAO.denyAppointment(id);
             // Optionally, log this action or send a notification
             return true;
         } catch (SQLException e) {

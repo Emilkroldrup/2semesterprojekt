@@ -9,15 +9,28 @@ public class Appointment {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String description;
+    private boolean cancelled;
 
-    public Appointment(int id, int customerId, int employeeId, LocalDateTime startTime, LocalDateTime endTime, String description) {
+    public Appointment(int id, int customerId, int employeeId, LocalDateTime startTime, LocalDateTime endTime, String description, boolean cancelled) {
         this.id = id;
         this.customerId = customerId;
         this.employeeId = employeeId;
         this.startTime = startTime;
         this.endTime = endTime;
         this.description = description;
+        this.cancelled=cancelled;
     }
+
+    public Appointment(int customerId, int employeeId, LocalDateTime startTime, LocalDateTime endTime, String description, boolean cancelled) {
+        this.customerId=customerId;
+        this.employeeId=employeeId;
+        this.startTime=startTime;
+        this.endTime=endTime;
+        this.description=description;
+        this.cancelled=cancelled;
+    }
+
+
 
     // Getters
     public int getId() {
@@ -42,6 +55,10 @@ public class Appointment {
 
     public String getDescription() {
         return description;
+    }
+
+    public Boolean getCancelled() {
+        return cancelled;
     }
 
     // Setters
@@ -69,6 +86,10 @@ public class Appointment {
         this.description = description;
     }
 
+    public void setCancelled (Boolean cancelled) {
+        this.cancelled=cancelled;
+    }
+
     @Override
     public String toString() {
         return "Appointment{" +
@@ -78,6 +99,7 @@ public class Appointment {
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 ", description='" + description + '\'' +
+                ", cancelled=" + cancelled +
                 '}';
     }
 }

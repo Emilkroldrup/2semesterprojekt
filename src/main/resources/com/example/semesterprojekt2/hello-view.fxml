@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="682.0" prefWidth="389.0" spacing="20.0" style="-fx-background-color: FFC0CB;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semesterprojekt2.HelloController">
+<VBox alignment="CENTER" prefHeight="682.0" prefWidth="389.0" spacing="20.0" style="-fx-background-color: FFC0CB;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semesterprojekt2.OpeningScreen">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
@@ -23,12 +23,12 @@
             <Image url="@../../../Pictures/frisør-removebg-preview.png" />
          </image>
       </ImageView>
-      <Button fx:id="Customer" mnemonicParsing="false" onAction="#onHelloButtonClick1" style="-fx-background-color: AEEEEE;" text="Customer" translateX="-60.0" translateY="-65.0">
+      <Button fx:id="Customer" mnemonicParsing="false" onAction="#SwitchSceneCustomerLogin" style="-fx-background-color: AEEEEE;" text="Customer" translateX="-60.0" translateY="-65.0">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="Employee" mnemonicParsing="false" onAction="#onHelloButtonClick2" style="-fx-background-color: AEEEEE;" text="Employee" translateX="60.0" translateY="-115.0">
+      <Button fx:id="Employee" mnemonicParsing="false" onAction="#SwitchSceneEmployeeLogin" style="-fx-background-color: AEEEEE;" text="Employee" translateX="60.0" translateY="-115.0">
          <font>
             <Font size="14.0" />
          </font>

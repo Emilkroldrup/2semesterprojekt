@@ -4,10 +4,15 @@ import com.example.semesterprojekt2.dao.AppointmentDAO;
 import com.example.semesterprojekt2.dao.CustomerDAO;
 import com.example.semesterprojekt2.dao.EmployeeDAO;
 import com.example.semesterprojekt2.dao.TreatmentDAO;
+import com.example.semesterprojekt2.model.Appointment;
+import com.example.semesterprojekt2.model.Customer;
+
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 public class UseCase {
 
-    public static void main (String [] args) {
+    public static void main (String [] args) throws SQLException {
 
         AppointmentDAO appointment = new AppointmentDAO();
         CustomerDAO customer = new CustomerDAO();
@@ -24,5 +29,13 @@ public class UseCase {
         //customer.getAllCustomers(); CHECKED
         //customer.deleteCustomer(1); CHECKED
         //customer.getAllCustomers(); CHECKED
+
+        /* Appointment apm = new Appointment(1, 1,
+                LocalDateTime.parse("2024-03-15T14:30:00"),LocalDateTime.parse("2024-03-15T15:00:00"), "Trim", false);
+
+         */
+
+        //appointment.addAppointment(apm); CHECKED
+        //appointment.denyAppointment(1); CHECKED
     }
 }

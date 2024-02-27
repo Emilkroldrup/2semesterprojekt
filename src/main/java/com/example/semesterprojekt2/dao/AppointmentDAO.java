@@ -55,7 +55,8 @@ public class AppointmentDAO {
                             rs.getInt("employeeId"),
                             rs.getObject("startTime", LocalDateTime.class),
                             rs.getObject("endTime", LocalDateTime.class),
-                            rs.getString("description")
+                            rs.getString("description"),
+                            rs.getBoolean("cancelled")
                     );
                 }
             }
@@ -82,7 +83,8 @@ public class AppointmentDAO {
                         rs.getInt("employeeId"),
                         rs.getObject("startTime", LocalDateTime.class),
                         rs.getObject("endTime", LocalDateTime.class),
-                        rs.getString("description")
+                        rs.getString("description"),
+                        rs.getBoolean("cancelled")
                 ));
             }
         }
@@ -95,8 +97,8 @@ public class AppointmentDAO {
      * @param id The ID of the appointment to delete.
      * @throws SQLException if there is an error during database access.
      */
-    public void deleteAppointment(int id) throws SQLException {
-        String sql = "DELETE FROM appointments WHERE id = ?";
+    public void denyAppointment(int id) throws SQLException {
+        String sql = "UPDATE appointments SET cancelled = 1 WHERE id = ?"; // 0=false // other numbers=true // true=cancelled
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, id);
@@ -144,7 +146,7 @@ public class AppointmentDAO {
     }
 
     public void updateAppointment(Appointment appointment) throws SQLException {
-        String sql = "UPDATE appointments SET customerId = ?, employeeId = ?, startTime = ?, endTime = ?, description = ? WHERE id = ?";
+        String sql = "UPDATE appointments SET customerId = ?, employeeId = ?, startTime = ?, endTime = ?, description = ?, cancelled = ? WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, appointment.getCustomerId());
@@ -152,7 +154,8 @@ public class AppointmentDAO {
             pstmt.setObject(3, appointment.getStartTime());
             pstmt.setObject(4, appointment.getEndTime());
             pstmt.setString(5, appointment.getDescription());
-            pstmt.setInt(6, appointment.getId());
+            pstmt.setBoolean(6, appointment.getCancelled());
+            pstmt.setInt(7, appointment.getId());
             pstmt.executeUpdate();
         }
     }
