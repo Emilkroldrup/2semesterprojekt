@@ -1,5 +1,6 @@
 package com.example.semesterprojekt2.dao;
 
+import com.example.semesterprojekt2.model.Log;
 import com.example.semesterprojekt2.model.Treatment;
 import com.example.semesterprojekt2.util.DatabaseConnection;
 
@@ -7,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,12 @@ public class TreatmentDAO {
             pstmt.setString(3, treatment.getDescription());
             pstmt.executeUpdate();
         }
+        Log logEntry = new Log(
+                "Add Treatment",
+                LocalDateTime.now(),
+                "Added Treatment: " + treatment.getId()
+        );
+        new LogDAO().addLogEntry(logEntry);
     }
 
     /**
@@ -95,5 +103,11 @@ public class TreatmentDAO {
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
         }
+        Log logEntry = new Log(
+                "Delete Treatment",
+                LocalDateTime.now(),
+                "Deleted Treatment: " + id
+        );
+        new LogDAO().addLogEntry(logEntry);
     }
 }

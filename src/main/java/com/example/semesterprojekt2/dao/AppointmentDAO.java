@@ -1,6 +1,7 @@
 package com.example.semesterprojekt2.dao;
 
 import com.example.semesterprojekt2.model.Appointment;
+import com.example.semesterprojekt2.model.Log;
 import com.example.semesterprojekt2.util.DatabaseConnection;
 
 import java.sql.Connection;
@@ -33,6 +34,13 @@ public class AppointmentDAO {
             pstmt.setString(5, appointment.getDescription());
             pstmt.executeUpdate();
         }
+        Log logEntry = new Log(
+                "Add Appointment",
+                LocalDateTime.now(),
+                "Added appointment: " + appointment.getDescription()
+        );
+        new LogDAO().addLogEntry(logEntry);
+
     }
 
     /**
@@ -104,6 +112,12 @@ public class AppointmentDAO {
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
         }
+        Log logEntry = new Log(
+                "Cancel Appointment",
+                LocalDateTime.now(),
+                "Cancelled appointment: " + id
+        );
+        new LogDAO().addLogEntry(logEntry);
     }
 
     /**
@@ -181,6 +195,12 @@ public class AppointmentDAO {
             pstmt.setInt(7, appointment.getId());
             pstmt.executeUpdate();
         }
+        Log logEntry = new Log(
+                "Update Appointment",
+                LocalDateTime.now(),
+                "Updated appointment: " + appointment.getId()
+        );
+        new LogDAO().addLogEntry(logEntry);
     }
 
     /**
