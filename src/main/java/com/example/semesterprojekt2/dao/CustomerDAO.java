@@ -103,5 +103,11 @@ public class CustomerDAO {
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
         }
+        Log logEntry = new Log(
+                "Delete Customer",
+                LocalDateTime.now(),
+                "Deleted customer: " + id
+        );
+        new LogDAO().addLogEntry(logEntry);
     }
 }

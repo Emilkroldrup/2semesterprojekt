@@ -23,11 +23,11 @@ public class UseCase {
         //employee.addEmployee(employee1);  CHECKED
         //employee.getEmployeeByEmail("karina@gmail.com");  CHECKED
 
-        //Customer customer1 = new Customer("Berit", "beritkunde@gmail.com", "27131074");
-        //customer.addCustomer(customer1); CHECKED
+        //Customer customer2 = new Customer("Hanne", "hannekunde@gmail.com", "10222370");
+        //customer.addCustomer(customer2);
         //customer.getCustomerById(1); CHECKED
         //customer.getAllCustomers(); CHECKED
-        //customer.deleteCustomer(1); CHECKED
+        //customer.deleteCustomer(7);
         //customer.getAllCustomers(); CHECKED
 
         /* Appointment apm = new Appointment(1, 1,
