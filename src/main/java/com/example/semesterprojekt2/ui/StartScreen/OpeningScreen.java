@@ -1,4 +1,4 @@
-package com.example.semesterprojekt2;
+package com.example.semesterprojekt2.ui.StartScreen;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,7 +44,7 @@ public class OpeningScreen {
     //if Customer
     @FXML
     protected void SwitchSceneCustomerLogin(ActionEvent event) throws IOException {
-            root = FXMLLoader.load(getClass().getResource("LoginCustomer.fxml"));
+            root = FXMLLoader.load(getClass().getResource("Login/LoginCustomer.fxml"));
         stage= (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene (root);
         stage.setScene(scene);
@@ -53,7 +53,7 @@ public class OpeningScreen {
     //If employee
     @FXML
     protected void SwitchSceneEmployeeLogin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("LoginEmployee.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Login/LoginEmployee.fxml"));
         stage= (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene (root);
         stage.setScene(scene);
