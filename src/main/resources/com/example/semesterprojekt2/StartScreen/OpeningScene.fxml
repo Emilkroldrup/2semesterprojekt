@@ -20,7 +20,7 @@
       </Label>
       <ImageView fx:id="Logo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateY="-170.0">
          <image>
-            <Image url="@../../../../Pictures/frisør-removebg-preview.png" />
+            <Image url="@../../../../Pictures/Barber-Icon.png" />
          </image>
       </ImageView>
       <Button fx:id="Customer" mnemonicParsing="false" onAction="#SwitchSceneCustomerLogin" style="-fx-background-color: AEEEEE;" text="Customer" translateX="-60.0" translateY="-65.0">

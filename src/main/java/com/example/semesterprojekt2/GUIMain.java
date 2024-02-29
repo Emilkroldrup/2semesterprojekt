@@ -2,24 +2,30 @@ package com.example.semesterprojekt2;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 
 public class GUIMain extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(GUIMain.class.getResource("StartScreen/OpeningScene.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 389, 682);
-        stage.setTitle("MonkasBarberShop");
-        InputStream iconStream = getClass().getResourceAsStream("/Pictures/Frisør-removebg-preview.png");
+    public void start(Stage primarystage) throws IOException {
+        FXMLLoader  loader= new FXMLLoader();
+        URL xmlurl = getClass().getResource("StartScreen/OpeningScene.fxml");
+        loader.setLocation(xmlurl);
+        Parent root = loader.load();
+
+        primarystage.setTitle("MonkasBarberShop");
+        InputStream iconStream = getClass().getResourceAsStream("/Pictures/Barber-Icon.png");
         Image image = new Image(iconStream);
-        stage.getIcons().add(image);
-        stage.setScene(scene);
-        stage.show();
+        primarystage.getIcons().add(image);
+        Scene scene = new Scene(root, 389, 682);
+        primarystage.setScene(scene);
+        primarystage.show();
     }
 
     public static void main(String[] args) {
