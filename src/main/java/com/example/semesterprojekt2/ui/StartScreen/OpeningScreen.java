@@ -53,7 +53,7 @@ public class OpeningScreen {
     //If employee
     @FXML
     protected void SwitchSceneEmployeeLogin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("ui/login/LoginEmployee.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/login/LoginEmployee.fxml"));
         stage= (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene (root);
         stage.setScene(scene);
