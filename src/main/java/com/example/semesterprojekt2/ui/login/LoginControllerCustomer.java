@@ -26,7 +26,7 @@ public class LoginControllerCustomer {
 
     @FXML
     protected void BackToScene1(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/StartScreen/hello-view.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/StartScreen/OpeningScene.fxml"));
         stage= (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
