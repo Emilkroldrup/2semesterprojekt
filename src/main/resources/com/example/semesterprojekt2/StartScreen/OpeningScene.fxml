@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="682.0" prefWidth="389.0" spacing="20.0" style="-fx-background-color: FFC0CB;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semesterprojekt2.OpeningScreen">
+<VBox alignment="CENTER" prefHeight="682.0" prefWidth="389.0" spacing="20.0" style="-fx-background-color: FFC0CB;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semesterprojekt2.ui.StartScreen.OpeningScreen">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
@@ -20,7 +20,7 @@
       </Label>
       <ImageView fx:id="Logo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateY="-170.0">
          <image>
-            <Image url="@../../../Pictures/frisør-removebg-preview.png" />
+            <Image url="@../../../../Pictures/Barber-Icon.png" />
          </image>
       </ImageView>
       <Button fx:id="Customer" mnemonicParsing="false" onAction="#SwitchSceneCustomerLogin" style="-fx-background-color: AEEEEE;" text="Customer" translateX="-60.0" translateY="-65.0">

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semesterprojekt2.ui.login.LoginControllerCustomer">
+   <center>
+      <VBox alignment="CENTER" prefHeight="682.0" prefWidth="389.0" spacing="20.0" style="-fx-background-color: FFC0CB;">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <children>
+            <Label fx:id="welcomeText" text="Customer💇🏼‍♀️" textAlignment="CENTER" translateY="-95.0">
+               <font>
+                  <Font name="System Italic" size="31.0" />
+               </font>
+            </Label>
+            <Label text="Please Enter Your Phone Number Here!" translateY="-95.0">
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Label>
+            <Label text="Phone Number:" translateY="-30.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField translateY="-42.0" />
+            <Button fx:id="backbutton" minWidth="75.0" mnemonicParsing="false" onAction="#BackToScene1" style="-fx-background-color: AEEEEE;" text="🔙" translateX="-160.0" translateY="218.5">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
