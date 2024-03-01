@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFC0CB;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semesterprojekt2.ui.appointment.AppointmentController">
+   <children>
+      <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="122.0" layoutY="14.0" prefHeight="43.0" prefWidth="356.0" text="Appointment schedule">
+         <font>
+            <Font name="Lucida Calligraphy Italic" size="28.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="datePicker" layoutX="194.0" layoutY="78.0" onAction="#chooseDate" prefHeight="43.0" prefWidth="212.0" showWeekNumbers="true" style="-fx-background-color: AEEEEE;" />
+   </children>
+</AnchorPane>
