@@ -44,7 +44,7 @@ public class OpeningScreen {
     //if Customer
     @FXML
     protected void SwitchSceneCustomerLogin(ActionEvent event) throws IOException {
-            root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/login/LoginCustomer.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/Login/LoginCustomer.fxml"));
         stage= (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene (root);
         stage.setScene(scene);

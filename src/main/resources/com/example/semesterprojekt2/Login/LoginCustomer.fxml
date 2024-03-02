@@ -15,27 +15,42 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <Label fx:id="welcomeText" text="Customer💇🏼‍♀️" textAlignment="CENTER" translateY="-95.0">
+            <Label fx:id="welcomeText" text="Customer💇🏼‍♀️" textAlignment="CENTER" translateX="10.0" translateY="-75.0">
                <font>
                   <Font name="System Italic" size="31.0" />
                </font>
             </Label>
-            <Label text="Please Enter Your Phone Number Here!" translateY="-95.0">
+            <Label text="    Please Enter Your Phone Number Here &#10;                            To Login!" translateY="-65.0">
                <font>
                   <Font name="System Italic" size="15.0" />
                </font>
             </Label>
-            <Label text="Phone Number:" translateY="-30.0">
+            <Label text="Phone Number:" translateY="-5.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField translateY="-42.0" />
-            <Button fx:id="backbutton" minWidth="75.0" mnemonicParsing="false" onAction="#BackToScene1" style="-fx-background-color: AEEEEE;" text="🔙" translateX="-160.0" translateY="218.5">
+            <TextField fx:id="LoginUser" translateY="-17.0" />
+            <Button fx:id="backbutton" minWidth="75.0" mnemonicParsing="false" onAction="#BackToScene1" style="-fx-background-color: AEEEEE;" text="🔙" translateX="-160.0" translateY="303.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
+            <Button fx:id="LoginCustomer" minWidth="75.0" mnemonicParsing="false" onAction="#LoginCustomers" style="-fx-background-color: AEEEEE;" text="LOGIN" translateY="-85.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="createaccount" minWidth="75.0" mnemonicParsing="false" onAction="#createaccountscene" style="-fx-background-color: AEEEEE;" text="Create Account" translateX="3.0" translateY="50.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Label text="   Don't have an account?&#9;&#10;       Create one here ↓" translateY="-65.0">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
    </center>

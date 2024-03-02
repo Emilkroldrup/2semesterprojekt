@@ -23,7 +23,7 @@ public class CustomerDAO {
      * @param customer The customer to add.
      * @throws SQLException if there is an error during database access.
      */
-    public void addCustomer(Customer customer) throws SQLException {
+    public Customer addCustomer(Customer customer) throws SQLException {
         String sql = "INSERT INTO customers (name, email, phoneNumber) VALUES (?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -38,7 +38,10 @@ public class CustomerDAO {
             "Added customer: " + customer.getName()
         );
         new LogDAO().addLogEntry(logEntry);
+        return  customer;
     }
+
+
 
     /**
      * Retrieves a customer by their ID.
