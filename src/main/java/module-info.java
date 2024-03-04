@@ -21,4 +21,6 @@ module com.example.semesterprojekt2 {
     opens com.example.semesterprojekt2.ui.StartScreen to javafx.fxml;
     exports com.example.semesterprojekt2.ui.appointment;
     opens com.example.semesterprojekt2.ui.appointment to javafx.fxml;
+    exports com.example.semesterprojekt2.ui.treatment;
+    opens com.example.semesterprojekt2.ui.treatment to javafx.fxml;
 }
