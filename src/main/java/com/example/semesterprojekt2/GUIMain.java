@@ -15,7 +15,7 @@ public class GUIMain extends Application {
     @Override
     public void start(Stage primarystage) throws IOException {
         FXMLLoader  loader= new FXMLLoader();
-        URL xmlurl = getClass().getResource("StartScreen/OpeningScene.fxml");
+        URL xmlurl = getClass().getResource("Appointment/AppointmentView.fxml");
         loader.setLocation(xmlurl);
         Parent root = loader.load();
 

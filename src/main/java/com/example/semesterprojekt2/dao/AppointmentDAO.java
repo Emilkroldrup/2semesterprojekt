@@ -232,6 +232,6 @@ public class AppointmentDAO {
                 }
             }
         }
-        return appointments;  
+        return appointments;
     }
 }

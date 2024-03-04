@@ -40,4 +40,10 @@ public class AppointmentController {
         datePicker.getOnAction(); // gets clicked date
     }
 
+    public void useDate () {
+
+    }
+
+
+
 }

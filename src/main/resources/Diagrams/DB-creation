@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Vært: 127.0.0.1:3306
--- Genereringstid: 26. 02 2024 kl. 10:00:25
+-- Genereringstid: 04. 03 2024 kl. 09:15:12
 -- Serverversion: 8.2.0
 -- PHP-version: 8.2.13
 
@@ -35,10 +35,18 @@ CREATE TABLE IF NOT EXISTS `appointments` (
   `startTime` datetime NOT NULL,
   `endTime` datetime NOT NULL,
   `description` text NOT NULL,
+  `cancelled` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `customerId` (`customerId`),
   KEY `employeeId` (`employeeId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Data dump for tabellen `appointments`
+--
+
+INSERT INTO `appointments` (`id`, `customerId`, `employeeId`, `startTime`, `endTime`, `description`, `cancelled`) VALUES
+(1, 1, 1, '2024-03-15 14:30:00', '2024-03-15 15:00:00', 'Trim', 1);
 
 -- --------------------------------------------------------
 
@@ -54,7 +62,14 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `phoneNumber` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `customer_email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Data dump for tabellen `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `email`, `phoneNumber`) VALUES
+(1, 'Anna', 'anna@gmail.com', '22113399');
 
 -- --------------------------------------------------------
 
@@ -70,7 +85,36 @@ CREATE TABLE IF NOT EXISTS `employees` (
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Data dump for tabellen `employees`
+--
+
+INSERT INTO `employees` (`id`, `name`, `email`, `password`) VALUES
+(1, 'Karina', 'karina@gmail.com', 'Karina123');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `log_entries`
+--
+
+DROP TABLE IF EXISTS `log_entries`;
+CREATE TABLE IF NOT EXISTS `log_entries` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `action` varchar(255) NOT NULL,
+  `timestamp` timestamp NOT NULL,
+  `details` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Data dump for tabellen `log_entries`
+--
+
+INSERT INTO `log_entries` (`id`, `action`, `timestamp`, `details`) VALUES
+(1, 'Add Customer', '2024-03-02 15:22:02', 'Added customer: Anna');
 
 -- --------------------------------------------------------
 
@@ -85,7 +129,17 @@ CREATE TABLE IF NOT EXISTS `treatments` (
   `duration` int NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Data dump for tabellen `treatments`
+--
+
+INSERT INTO `treatments` (`id`, `name`, `duration`, `description`) VALUES
+(1, 'trim', 30, 'Haircut'),
+(2, 'hairdye', 120, 'hair coloring'),
+(3, 'hairwash', 10, 'massage for hair'),
+(4, 'shave', 20, 'shaving of beard or eyebrows');
 
 --
 -- Begrænsninger for dumpede tabeller
