@@ -38,8 +38,7 @@ public class UseCase {
         EmployeeDAO employee = new EmployeeDAO();
         TreatmentDAO treatment = new TreatmentDAO();
 
-
-
+        
         //Employee employee1 = new Employee("Karina", "karina@gmail.com", "Karina123");
         //employee.addEmployee(employee1);  CHECKED
         //employee.getEmployeeByEmail("karina@gmail.com");  CHECKED
