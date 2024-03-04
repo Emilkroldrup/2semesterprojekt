@@ -1,5 +1,6 @@
 package com.example.semesterprojekt2.dao;
 
+import com.example.semesterprojekt2.model.Customer;
 import com.example.semesterprojekt2.model.Employee;
 import com.example.semesterprojekt2.util.DatabaseConnection;
 
@@ -7,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Data Access Object for employees.
@@ -54,5 +57,22 @@ public class EmployeeDAO {
             }
         }
         return null; // Employee not found
+    }
+
+    public List<Employee> getallEmployees() throws SQLException {
+        List<Employee> employees = new ArrayList<>();
+        String sql = "SELECT * FROM employees";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+                employees.add(new Employee(
+
+                        rs.getString("email"),
+                        rs.getString("password")
+                ));
+            }
+        }
+        return employees;
     }
 }

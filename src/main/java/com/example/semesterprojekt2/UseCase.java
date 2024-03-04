@@ -6,6 +6,7 @@ import com.example.semesterprojekt2.dao.EmployeeDAO;
 import com.example.semesterprojekt2.dao.TreatmentDAO;
 import com.example.semesterprojekt2.model.Appointment;
 import com.example.semesterprojekt2.model.Customer;
+import com.example.semesterprojekt2.model.Employee;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -17,6 +18,7 @@ public class UseCase {
         customer = customerDAO.addCustomer(customer);
         return customer;
     }
+
 
 
 

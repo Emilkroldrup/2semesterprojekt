@@ -1,6 +1,8 @@
-package com.example.semesterprojekt2.ui.OpretBruger;
+package com.example.semesterprojekt2.ui.CreateUser;
 
 import com.example.semesterprojekt2.UseCase;
+import com.example.semesterprojekt2.dao.AppointmentDAO;
+import com.example.semesterprojekt2.dao.CustomerDAO;
 import com.example.semesterprojekt2.model.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class OpretBruger {
+public class CreateUser {
 
     @FXML
     private Button backbutton;
