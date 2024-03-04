@@ -1,6 +1,5 @@
 package com.example.semesterprojekt2.ui.login;
 
-import com.example.semesterprojekt2.UseCase;
 import com.example.semesterprojekt2.dao.CustomerDAO;
 import com.example.semesterprojekt2.model.Customer;
 import javafx.event.ActionEvent;
@@ -42,7 +41,6 @@ public class LoginControllerCustomer {
 
     @FXML
     protected void LoginCustomers(ActionEvent event) throws IOException, SQLException {
-        Customer customer = new Customer();
         List<Customer> allCustomers = new CustomerDAO().getAllCustomers();
         boolean PhoneNumberCorrect = false;
         for(Customer c : allCustomers){
@@ -53,7 +51,7 @@ public class LoginControllerCustomer {
         }
         if(PhoneNumberCorrect){
 
-            root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/OpretBruger/OpretBruger.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/CreateUser/CreateUser.fxml"));
             stage= (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -68,7 +66,7 @@ public class LoginControllerCustomer {
 
     @FXML
     protected void createaccountscene(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/OpretBruger/OpretBruger.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/CreateUser/CreateUser.fxml"));
         stage= (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

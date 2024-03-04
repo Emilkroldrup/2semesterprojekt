@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semesterprojekt2.ui.OpretBruger.OpretBruger">
+<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semesterprojekt2.ui.CreateUser.CreateUser">
    <center>
       <VBox alignment="CENTER" prefHeight="682.0" prefWidth="389.0" spacing="20.0" style="-fx-background-color: FFC0CB;">
          <padding>

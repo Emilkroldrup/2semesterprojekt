@@ -13,7 +13,7 @@ module com.example.semesterprojekt2 {
     requires com.almasb.fxgl.all;
 
     opens com.example.semesterprojekt2 to javafx.fxml;
-    opens com.example.semesterprojekt2.ui.OpretBruger to javafx.fxml; // Add this line
+    opens com.example.semesterprojekt2.ui.CreateUser to javafx.fxml; // Add this line
     exports com.example.semesterprojekt2;
     exports com.example.semesterprojekt2.ui.login;
     opens com.example.semesterprojekt2.ui.login to javafx.fxml;

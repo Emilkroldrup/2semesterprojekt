@@ -26,9 +26,9 @@
                   <Font name="System Italic" size="16.0" />
                </font>
             </Label>
-            <TextField translateY="-27.0" />
-            <PasswordField translateY="5.0" />
-            <Button fx:id="backbutton" minWidth="75.0" mnemonicParsing="false" onAction="#BackToScene1" style="-fx-background-color: AEEEEE;" text="🔙" translateX="-156.7" translateY="236.0">
+            <TextField fx:id="mail" translateY="-27.0" />
+            <PasswordField fx:id="password" translateY="5.0" />
+            <Button fx:id="backbutton" minWidth="75.0" mnemonicParsing="false" onAction="#BackToScene1" style="-fx-background-color: AEEEEE;" text="🔙" translateX="-156.7" translateY="272.0">
                <font>
                   <Font size="24.0" />
                </font>
@@ -38,6 +38,11 @@
                   <Font name="System Italic" size="16.0" />
                </font>
             </Label>
+            <Button fx:id="LoginEmployee" minWidth="75.0" mnemonicParsing="false" onAction="#Login" style="-fx-background-color: AEEEEE;" text="Login" translateY="-100.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
    </center>

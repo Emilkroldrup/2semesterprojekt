@@ -12,6 +12,11 @@ public class Employee {
         setPassword(password);
     }
 
+    public Employee(String email, String password) {
+        setEmail(email);
+        setPassword(password);
+    }
+
     public Employee(int id, String name, String email, String password) {
         this.id = id;
         this.name = name;
