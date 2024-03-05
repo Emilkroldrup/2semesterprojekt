@@ -4,6 +4,7 @@ import com.example.semesterprojekt2.UseCase;
 import com.example.semesterprojekt2.dao.AppointmentDAO;
 import com.example.semesterprojekt2.dao.CustomerDAO;
 import com.example.semesterprojekt2.model.Customer;
+import com.example.semesterprojekt2.service.NotificationService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -40,8 +42,9 @@ public class CreateUser {
     private Scene scene;
 
     @FXML
-    protected void CreateUser(ActionEvent event) throws IOException, SQLException {
+    protected void CreateUser(ActionEvent event) throws IOException, SQLException, MessagingException {
         Customer customer = new Customer(name.getText(),email.getText(),phonenumber.getText());
+        NotificationService.mailNotification(1, email.getText(), "Time");
         UseCase.AddCustomer(customer);
     }
     @FXML
@@ -52,7 +55,4 @@ public class CreateUser {
         stage.setScene(scene);
         stage.show();
     }
-
-
-
 }

@@ -11,6 +11,7 @@ module com.example.semesterprojekt2 {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.mail;
 
     opens com.example.semesterprojekt2 to javafx.fxml;
     opens com.example.semesterprojekt2.ui.CreateUser to javafx.fxml; // Add this line
@@ -21,4 +22,6 @@ module com.example.semesterprojekt2 {
     opens com.example.semesterprojekt2.ui.StartScreen to javafx.fxml;
     exports com.example.semesterprojekt2.ui.appointment;
     opens com.example.semesterprojekt2.ui.appointment to javafx.fxml;
+    exports com.example.semesterprojekt2.ui.treatment;
+    opens com.example.semesterprojekt2.ui.treatment to javafx.fxml;
 }
