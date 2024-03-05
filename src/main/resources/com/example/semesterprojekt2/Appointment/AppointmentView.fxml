@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,6 +13,7 @@
                 <Font name="Lucida Calligraphy Italic" size="28.0" />
             </font>
         </Label>
-        <DatePicker fx:id="datePicker" layoutX="97.0" layoutY="86.0" onAction="#chooseDate" prefHeight="43.0" prefWidth="212.0" showWeekNumbers="true" style="-fx-background-color: AEEEEE;" />
+        <DatePicker fx:id="datePicker" layoutX="97.0" layoutY="86.0" onAction="#initialize" prefHeight="43.0" prefWidth="212.0" showWeekNumbers="true" style="-fx-background-color: AEEEEE;" />
+      <ComboBox fx:id="timeComboBox" layoutX="139.0" layoutY="239.0" onAction="#initialize" prefWidth="150.0" promptText="time" />
     </children>
 </AnchorPane>
