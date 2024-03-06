@@ -1,4 +1,5 @@
 package com.example.semesterprojekt2.ui.appointment;
+import com.example.semesterprojekt2.dao.AppointmentDAO;
 import com.example.semesterprojekt2.model.Appointment;
 import com.example.semesterprojekt2.service.AppointmentService;
 import javafx.event.ActionEvent;
@@ -26,10 +27,15 @@ public class AppointmentController {
 
     private AppointmentService appointmentService;
 
+    private Appointment appointment1;
+
+    private AppointmentDAO appointmentDAO;
+
     public void initialize() {
         appointmentService = new AppointmentService(); // Initialize your AppointmentService
 
-        timeComboBox.getItems().addAll(
+
+        timeComboBox.getItems().addAll( // displays opening hours
                 "09:00", "10:00", "11:00",
                 "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"
         );
@@ -48,9 +54,10 @@ public class AppointmentController {
                 System.out.println("Selected date: " + date);
                 createDateTime(date, timeComboBox.getValue());
             }
+
         };
 
-// Assign the event handler to both timeComboBox and datePicker
+        // Assign the event handler to both timeComboBox and datePicker
         timeComboBox.setOnAction(selectionHandler);
         datePicker.setOnAction(selectionHandler);
 
@@ -67,10 +74,17 @@ public class AppointmentController {
                 // Do something with each appointment
                 System.out.println("Appointment: " + appointment);
             }
+
         } else {
             System.out.println("Date or time is not selected.");
         }
     }
+
+    private void bookAppointment () {
+
+    }
+
+    
 
 
 }
