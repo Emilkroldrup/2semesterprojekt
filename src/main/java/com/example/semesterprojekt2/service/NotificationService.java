@@ -1,8 +1,8 @@
 package com.example.semesterprojekt2.service;
 
 import java.util.Properties;
-import javax.mail.*;
-import javax.mail.internet.*;
+import jakarta.mail.*;
+import jakarta.mail.internet.*;
 
 public class NotificationService {
     public static void mailNotification(int mailType, String customerMail, String reservationTime) throws MessagingException {
