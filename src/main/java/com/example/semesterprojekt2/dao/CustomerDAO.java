@@ -50,7 +50,7 @@ public class CustomerDAO {
      * @return An Customer object if found, null otherwise.
      * @throws SQLException if there is an error during database access.
      */
-    public Customer getCustomerById(int id) throws SQLException {
+    public static Customer getCustomerById(int id) throws SQLException {
         String sql = "SELECT * FROM customers WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

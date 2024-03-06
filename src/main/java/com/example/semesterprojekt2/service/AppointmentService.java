@@ -1,7 +1,10 @@
 package com.example.semesterprojekt2.service;
 
 import com.example.semesterprojekt2.dao.AppointmentDAO;
+import com.example.semesterprojekt2.dao.CustomerDAO;
 import com.example.semesterprojekt2.model.Appointment;
+import com.example.semesterprojekt2.model.Customer;
+import jakarta.mail.MessagingException;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -45,24 +48,28 @@ public class AppointmentService {
             if (!isWithinBusinessHours(appointment.getStartTime(), appointment.getEndTime())) {
                 return false;
             }
-    
+
             // Check if the appointment duration is valid (15, 30, 45, or 60 minutes)
             long durationMinutes = java.time.Duration.between(appointment.getStartTime(), appointment.getEndTime()).toMinutes();
             if (!isValidDuration(durationMinutes)) {
                 return false;
             }
-    
+
             // Check for overlapping appointments
             if (appointmentDAO.hasOverlappingAppointment(appointment.getStartTime(), appointment.getEndTime())) {
                 return false;
             }
-    
+
             // If all checks pass, save the appointment
             appointmentDAO.addAppointment(appointment);
+            Customer customer = CustomerDAO.getCustomerById(appointment.getCustomerId());
+            NotificationService.mailConfirmationNotification(customer.getName(), appointment.getStartTime());
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
         }
     }
 
