@@ -13,22 +13,27 @@
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <children>
-      <Label fx:id="welcomeText" text="Are you a Customer or an Employee" textAlignment="CENTER" translateY="40.0">
+      <Label fx:id="welcomeText" text="Are you a Customer or an Employee" textAlignment="CENTER" translateY="60.0">
          <font>
             <Font name="System Italic" size="16.0" />
          </font>
       </Label>
-      <ImageView fx:id="Logo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateY="-170.0">
+      <ImageView fx:id="Logo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateY="-145.0">
          <image>
             <Image url="@../../../../Pictures/Barber-Icon.png" />
          </image>
       </ImageView>
-      <Button fx:id="Customer" mnemonicParsing="false" onAction="#SwitchSceneCustomerLogin" style="-fx-background-color: AEEEEE;" text="Customer" translateX="-60.0" translateY="-65.0">
+      <Button fx:id="Customer" mnemonicParsing="false" onAction="#SwitchSceneCustomerLogin" style="-fx-background-color: AEEEEE;" text="Customer" translateX="-60.0" translateY="-55.0">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="Employee" mnemonicParsing="false" onAction="#SwitchSceneEmployeeLogin" style="-fx-background-color: AEEEEE;" text="Employee" translateX="60.0" translateY="-115.0">
+      <Button fx:id="Employee" mnemonicParsing="false" onAction="#SwitchSceneEmployeeLogin" style="-fx-background-color: AEEEEE;" text="Employee" translateX="60.0" translateY="-105.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="Treatment" mnemonicParsing="false" onAction="#Treatment" prefHeight="44.0" prefWidth="110.0" style="-fx-background-color: AEEEEE;" text="Treatments" translateX="-140.0" translateY="160.0">
          <font>
             <Font size="14.0" />
          </font>

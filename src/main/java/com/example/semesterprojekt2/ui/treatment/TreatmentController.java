@@ -46,7 +46,7 @@ public class TreatmentController {
 
 
     public void backToLogin(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/Login/LoginCustomer.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/StartScreen/OpeningScene.fxml"));
         stage= (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -54,8 +54,8 @@ public class TreatmentController {
         System.out.println(t);
     }
 
-    public void toBookingScene(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/Appointment/AppointmentView.fxml"));
+    public void TologinScene(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/Login/LoginCustomer.fxml"));
         stage= (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
