@@ -120,7 +120,6 @@ public class AppointmentService {
     public boolean cancelAppointment(int id) {
         try {
             appointmentDAO.denyAppointment(id);
-            // Optionally, log this action or send a notification
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -137,7 +136,6 @@ public class AppointmentService {
      */
     public List<Appointment> getAppointmentsInRange(LocalDateTime start, LocalDateTime end) {
         try {
-            // Use AppointmentDAO to find appointments within the specified range
             return appointmentDAO.getAppointmentsInRange(start, end);
         } catch (SQLException e) {
             e.printStackTrace();

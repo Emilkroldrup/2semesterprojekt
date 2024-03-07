@@ -101,7 +101,7 @@ public class AppointmentController {
         System.out.println("Selected date and time: " + dateTime);
         LocalDateTime endDateTime = dateTime.plusMinutes(30); // Assuming appointments last for 30 minutes
         
-        Appointment a = new Appointment(customerId, eDao.getEmployeeByName(name), dateTime, endDateTime, "Description", false);
+        Appointment a = new Appointment(customerId, 1, dateTime, endDateTime, "Description", false);
         appointmentService.createAppointment(a);
         
         

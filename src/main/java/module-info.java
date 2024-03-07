@@ -14,7 +14,7 @@ module com.example.semesterprojekt2 {
     requires jakarta.mail;
 
     opens com.example.semesterprojekt2 to javafx.fxml;
-    opens com.example.semesterprojekt2.ui.CreateUser to javafx.fxml; // Add this line
+    opens com.example.semesterprojekt2.ui.CreateUser to javafx.fxml;
     exports com.example.semesterprojekt2;
     exports com.example.semesterprojekt2.ui.login;
     opens com.example.semesterprojekt2.ui.login to javafx.fxml;

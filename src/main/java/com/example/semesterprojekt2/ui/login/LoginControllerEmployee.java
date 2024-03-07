@@ -1,9 +1,6 @@
 package com.example.semesterprojekt2.ui.login;
 
-import com.example.semesterprojekt2.UseCase;
-import com.example.semesterprojekt2.dao.CustomerDAO;
 import com.example.semesterprojekt2.dao.EmployeeDAO;
-import com.example.semesterprojekt2.model.Customer;
 import com.example.semesterprojekt2.model.Employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -63,7 +60,7 @@ public class LoginControllerEmployee {
            stage.setScene(scene);
            stage.show();
        } else{
-           System.out.println("The Email Or Password Is InCorrect, Pls Check If You Have Typed In The Right Phone Number");
+           System.out.println("The Email Or Password Is Incorrect, Pls Check If You Have Typed In The Right Phone Number");
        }
    }
 

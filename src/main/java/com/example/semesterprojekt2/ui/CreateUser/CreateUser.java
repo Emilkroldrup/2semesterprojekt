@@ -1,7 +1,5 @@
 package com.example.semesterprojekt2.ui.CreateUser;
 
-import com.example.semesterprojekt2.UseCase;
-import com.example.semesterprojekt2.dao.AppointmentDAO;
 import com.example.semesterprojekt2.dao.CustomerDAO;
 import com.example.semesterprojekt2.model.Customer;
 import com.example.semesterprojekt2.service.NotificationService;

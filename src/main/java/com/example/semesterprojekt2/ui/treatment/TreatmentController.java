@@ -1,7 +1,5 @@
 package com.example.semesterprojekt2.ui.treatment;
 
-import com.example.semesterprojekt2.dao.TreatmentDAO;
-import com.example.semesterprojekt2.model.Treatment;
 import com.example.semesterprojekt2.ui.login.LoginControllerCustomer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

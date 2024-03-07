@@ -1,6 +1,5 @@
 package com.example.semesterprojekt2.dao;
 
-import com.example.semesterprojekt2.model.Customer;
 import com.example.semesterprojekt2.model.Employee;
 import com.example.semesterprojekt2.util.DatabaseConnection;
 

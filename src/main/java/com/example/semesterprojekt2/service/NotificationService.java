@@ -7,20 +7,20 @@ import jakarta.mail.internet.*;
 
 public class NotificationService {
     public static void userCreatedNotification(String customerMail) throws MessagingException {
-        // Information for at kunne bruge og sende mails fra den givende email, ved brug af SMTP server
+        // Information needed to use the given email to send mails, using the SMTP server
         String host = "smtp.office365.com";
         String port = "587";
         String email = "MonkasBarber@outlook.com";
         String password = "123Monika!";
 
-        // Email egenskaber
+        // Email properties
         Properties props = new Properties();
-        props.put("mail.smtp.auth", "true"); // Aktivere godkendelse
-        props.put("mail.smtp.starttls.enable", "true"); // Aktivere TLS
-        props.put("mail.smtp.host", host); // Angivelse af SMTP-server
-        props.put("mail.smtp.port", port); // Angivelse af SMTP-port
+        props.put("mail.smtp.auth", "true"); // activating authentication
+        props.put("mail.smtp.starttls.enable", "true"); // activvating TLS
+        props.put("mail.smtp.host", host); // pointing to the SMTP server
+        props.put("mail.smtp.port", port); // pointing to the SMTP port
 
-        // Godkender sessionen
+        // Acknowledge sessionen
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(email, password);
@@ -28,18 +28,18 @@ public class NotificationService {
         });
         try {
             Message message = new MimeMessage(session);
-            // Fra den givende email
+            // From the given mail
             message.setFrom(new InternetAddress(email));
-            // Til kunden
+            // To costumer
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(customerMail));
-            // Opretter en String builder for at opbygge teksten
+            // Creates a string to build the message
             StringBuilder messageText = new StringBuilder();
 
             message.setSubject("Welcome to Monkas Barber");
             messageText.append("Dear " + customerMail + "\n");
             messageText.append("Welcome to Monkas Barber Shop! We're ready to give you a nice haircut whenever you're ready!");
 
-            // Tilføjer String builderen til mail beskeden
+            // adding string builder to the message.
             message.setText(messageText.toString());
 
             // Send message
@@ -50,20 +50,20 @@ public class NotificationService {
         }
     }
     public static void mailConfirmationNotification(String customerMail, LocalDateTime reservationTime) throws MessagingException {
-        // Information for at kunne bruge og sende mails fra den givende email, ved brug af SMTP server
+        // Information needed to use the given email to send mails, using the SMTP server
         String host = "smtp.office365.com";
         String port = "587";
         String email = "MonkasBarber@outlook.com";
         String password = "123Monika!";
 
-        // Email egenskaber
+        // Email properties
         Properties props = new Properties();
-        props.put("mail.smtp.auth", "true"); // Aktivere godkendelse
-        props.put("mail.smtp.starttls.enable", "true"); // Aktivere TLS
-        props.put("mail.smtp.host", host); // Angivelse af SMTP-server
-        props.put("mail.smtp.port", port); // Angivelse af SMTP-port
+        props.put("mail.smtp.auth", "true"); // activating authentication
+        props.put("mail.smtp.starttls.enable", "true"); // activvating TLS
+        props.put("mail.smtp.host", host); // pointing to the SMTP server
+        props.put("mail.smtp.port", port); // pointing to the SMTP port
 
-        // Godkender sessionen
+        // Acknowledge sessionen
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(email, password);
@@ -71,14 +71,14 @@ public class NotificationService {
         });
         try {
             Message message = new MimeMessage(session);
-            // Fra den givende email
+            // From the given mail
             message.setFrom(new InternetAddress(email));
-            // Til kunden
+            // To costumer
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(customerMail));
-            // Opretter en String builder for at opbygge teksten
+            // Creates a string to build the message
             StringBuilder messageText = new StringBuilder();
 
-                // Titlen på mailen
+                // Title of the mail
             message.setSubject("Confirmation of Your Barber Shop Appointment");
 
             messageText.append("Dear " + customerMail + "\n");
@@ -86,7 +86,7 @@ public class NotificationService {
             messageText.append("Appointment Details:\n");
             messageText.append("Time: " + reservationTime);
 
-            // Tilføjer String builderen til mail beskeden
+            // adding string builder to the message.
             message.setText(messageText.toString());
 
             // Send message
