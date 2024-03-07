@@ -59,6 +59,32 @@ public class EmployeeDAO {
         return null; // Employee not found
     }
 
+    /**
+     * Retrieves an employee by their name.
+     * 
+     * @param name The name of the employee to retrieve.
+     * @return An Employee object if found, null otherwise.
+     * @throws SQLException if there is an error during database access.
+     */
+    public Employee getEmployeeByName(String name) throws SQLException {
+        String sql = "SELECT * FROM employees WHERE name = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, name);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return new Employee(
+                            rs.getInt("id"),
+                            rs.getString("email"),
+                            name,
+                            rs.getString("password")
+                    );
+                }
+            }
+        }
+        return null; // Employee not found
+    }
+
     public List<Employee> getallEmployees() throws SQLException {
         List<Employee> employees = new ArrayList<>();
         String sql = "SELECT * FROM employees";

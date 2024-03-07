@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -33,11 +34,18 @@ public class AppointmentController {
     @FXML
     private ComboBox<String> nameComboBox = new ComboBox<>();
 
+    @FXML
+    private Button bookingButton = new Button();
+
     private AppointmentService appointmentService;
 
     public static int customerId = LoginControllerCustomer.id;
 
     private EmployeeDAO eDao;
+
+    private LocalDateTime startTime;
+
+    private LocalDateTime endTime;
     
     public void initialize() {
         appointmentService = new AppointmentService();
@@ -61,28 +69,51 @@ public class AppointmentController {
                 if (time != null) {
                     createDateTime(date, time);
                 }
-            }
+            } 
         };
         
         timeComboBox.setOnAction(selectionHandler);
         datePicker.setOnAction(selectionHandler);
     }
+
+    public void initializeNames () {
+        nameComboBox.getItems().addAll(
+            "Karina", "Stinna", "Louise"
+            );
+
+            String name = nameComboBox.getValue();
+            EventHandler<ActionEvent> nameHandler = event -> {
+
+            if (event.getSource() == nameComboBox) {
+                System.out.println("Selected employee: " + name);
+            }
+    };
+        nameComboBox.setOnAction(nameHandler);
+    }
     
-    private void createDateTime(LocalDate date, String time) {
+    public void createDateTime(LocalDate date, String time) {
         if (date == null || time == null) {
-            System.out.println("Date or time is not selected.");
+            System.out.println("Date or time are not selected.");
             return;
         }
     
         LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.parse(time));
         System.out.println("Selected date and time: " + dateTime);
         LocalDateTime endDateTime = dateTime.plusMinutes(30); // Assuming appointments last for 30 minutes
-
-        Appointment a = new Appointment(customerId, 1, dateTime, endDateTime, "Description", false);
+        
+        Appointment a = new Appointment(customerId, eDao.getEmployeeByName(name), dateTime, endDateTime, "Description", false);
         appointmentService.createAppointment(a);
         
-       
+        
+        
     }
+    /* 
+    public void bookComplete (Appointment appointment) {
+        
+        
+    }
+    */
+
 
 
 }
