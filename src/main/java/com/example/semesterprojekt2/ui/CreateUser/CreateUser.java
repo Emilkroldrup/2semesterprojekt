@@ -46,7 +46,7 @@ public class CreateUser {
     protected void CreateUser(ActionEvent event) throws IOException, SQLException, MessagingException {
         CustomerDAO newcustomer = new CustomerDAO();
         boolean phonenumberexists = false;
-        List<Customer> allCustomers = new CustomerDAO().getAllCustomers();
+        List<Customer> allCustomers = newcustomer.getAllCustomers();
         for(Customer c : allCustomers){
             if(phonenumber.getText().equals(c.getPhoneNumber())){
                 System.out.println("Please change your Phonenumber Because it is already being used!");
