@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import jakarta.mail.MessagingException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class CreateUser {
 
@@ -43,9 +44,22 @@ public class CreateUser {
 
     @FXML
     protected void CreateUser(ActionEvent event) throws IOException, SQLException, MessagingException {
-        Customer customer = new Customer(name.getText(),email.getText(),phonenumber.getText());
-        NotificationService.userCreatedNotification(email.getText());
-        UseCase.AddCustomer(customer);
+        CustomerDAO newcustomer = new CustomerDAO();
+        boolean phonenumberexists = false;
+        List<Customer> allCustomers = new CustomerDAO().getAllCustomers();
+        for(Customer c : allCustomers){
+            if(phonenumber.getText().equals(c.getPhoneNumber())){
+                System.out.println("Please change your Phonenumber Because it is already being used!");
+                phonenumberexists = true;
+                break;
+            }
+        }
+        if(!phonenumberexists){
+            Customer customer = new Customer(name.getText(),email.getText(),phonenumber.getText());
+            newcustomer.addCustomer(customer);
+            NotificationService.userCreatedNotification(email.getText());
+        }
+
     }
     @FXML
     protected void backtologin(ActionEvent event) throws IOException {
