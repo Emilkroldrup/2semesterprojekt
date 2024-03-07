@@ -46,7 +46,6 @@ public class LoginControllerCustomer {
             if(LoginUser.getText().equals(c.getPhoneNumber())){
                 PhoneNumberCorrect = true;
                 id = c.getId();
-                System.out.println(id);
                 break;
             }
         }
