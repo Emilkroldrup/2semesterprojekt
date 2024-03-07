@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+header System sekvens diagram
+actor Bruger
+
+alt Customer
+    Bruger -> System: Customer
+    Bruger <-- System: CustomerLoginScreen
+    Bruger -> System: Skriver nummer
+    Bruger <-- System: Viser Appointment
+    end
+
+
+    alt Employee
+          Bruger -> System: Employee
+        Bruger <-- System: EmployeeLoginScreen
+        Bruger -> System: Skriver logindetails
+        Bruger <-- System: Viser Appointment
+        end
+
+
+
+
+
+alt Opret Appointment
+    Bruger -> System: Set Dato
+    Bruger -> System: Set Employee
+    Bruger -> System: Create appointment
+    Bruger <-- System: Appointment created
+    end
+
+
+
+
+@enduml

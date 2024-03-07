@@ -16,12 +16,12 @@
         </Label>
         <DatePicker fx:id="datePicker" layoutX="97.0" layoutY="86.0" onAction="#initialize" prefHeight="43.0" prefWidth="212.0" showWeekNumbers="true" style="-fx-background-color: AEEEEE;" />
       <ComboBox fx:id="timeComboBox" layoutX="139.0" layoutY="239.0" onAction="#initialize" prefWidth="150.0" promptText="time" />
-      <Button fx:id="returnButton" layoutY="634.0" mnemonicParsing="false" onAction="#backToLogin" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: AEEEEE;" text="🔙">
+      <Button fx:id="returnButton" layoutY="634.0" mnemonicParsing="false" onAction="#backToStart" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: AEEEEE;" text="🔙">
          <font>
             <Font size="28.0" />
          </font>
       </Button>
       <ComboBox fx:id="nameComboBox" layoutX="139.0" layoutY="316.0" prefWidth="150.0" promptText="Employee" />
-      <Button fx:id="bookingButton" layoutX="151.0" layoutY="428.0" onAction="#initializeNames" mnemonicParsing="false" text="Complete booking" />
+      <Button fx:id="bookingButton" layoutX="151.0" layoutY="428.0" mnemonicParsing="false" onAction="#initializeNames" text="Complete booking" />
     </children>
 </AnchorPane>
