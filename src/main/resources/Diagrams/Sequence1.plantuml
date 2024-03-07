@@ -5,6 +5,14 @@ autonumber
 
 header System sekvens diagram
 actor Bruger
+  Bruger <-- System: Startscreen
+
+  alt Treament
+      Bruger -> System: Treatment
+      Bruger <-- System: Shows Treaments
+      Bruger -> System: Book Treatment
+      Bruger <-- System: CustomerLoginScreen
+  end
 
 alt Customer
 
@@ -12,11 +20,12 @@ alt Customer
     Bruger <-- System: CustomerLoginScreen
 
     alt Existing Customer
-        Bruger -> System: Skriver nummer
-        Bruger <-- System: Viser Appointment
+        Bruger -> System: Type number
+        Bruger -> System: Login pressed
+        Bruger <-- System: Shows Appointment
     else New Customer
         Bruger -> System: Create Account
-        Bruger -> System: Skriver detaljerne
+        Bruger -> System: Type details
         Bruger <-- System: Account created
 
     end
@@ -26,8 +35,9 @@ end
 alt Employee
     Bruger -> System: Employee
     Bruger <-- System: EmployeeLoginScreen
-    Bruger -> System: Skriver logindetails
-    Bruger <-- System: Viser Appointment
+    Bruger -> System: Type logindetails
+     Bruger -> System: Login pressed
+    Bruger <-- System: Shows Appointment
 end
 
 
