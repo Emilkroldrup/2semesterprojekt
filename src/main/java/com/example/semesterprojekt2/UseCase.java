@@ -13,24 +13,6 @@ import java.time.LocalDateTime;
 
 public class UseCase {
 
-    public static Customer AddCustomer(Customer customer) throws SQLException {
-        CustomerDAO customerDAO = new CustomerDAO();
-        customer = customerDAO.addCustomer(customer);
-        return customer;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
     public static void main (String [] args) throws SQLException {
 
         AppointmentDAO appointment = new AppointmentDAO();
