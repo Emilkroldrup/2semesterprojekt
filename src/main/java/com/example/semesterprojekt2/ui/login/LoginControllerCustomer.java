@@ -35,8 +35,7 @@ public class LoginControllerCustomer {
     @FXML
     private Scene scene;
 
-
-   public static int id;
+    public static int id;
 
 
     @FXML
