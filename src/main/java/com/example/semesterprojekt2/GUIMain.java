@@ -19,7 +19,7 @@ public class GUIMain extends Application {
         loader.setLocation(xmlurl);
         Parent root = loader.load();
 
-        primarystage.setTitle("MonkasBarberShop");
+        primarystage.setTitle("HairMonika");
         InputStream iconStream = getClass().getResourceAsStream("/Pictures/Barber-Icon.png");
         Image image = new Image(iconStream);
         primarystage.getIcons().add(image);
