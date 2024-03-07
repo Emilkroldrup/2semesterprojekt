@@ -27,64 +27,68 @@ public class AppointmentController {
 
     private AppointmentService appointmentService;
 
-    private Appointment appointment1;
-
-    private AppointmentDAO appointmentDAO;
 
     public void initialize() {
-        appointmentService = new AppointmentService(); // Initialize your AppointmentService
-
-
-        timeComboBox.getItems().addAll( // displays opening hours
+        initializeAppointmentService();
+        initializeTimeComboBox();
+        initializeSelectionHandler();
+    }
+    
+    private void initializeAppointmentService() {
+        appointmentService = new AppointmentService();
+    }
+    
+    private void initializeTimeComboBox() {
+        timeComboBox.getItems().addAll(
                 "09:00", "10:00", "11:00",
                 "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"
         );
-
-        // Event handler for both time and date selection
+    }
+    
+    private void initializeSelectionHandler() {
         EventHandler<ActionEvent> selectionHandler = event -> {
             if (event.getSource() == timeComboBox) {
-                LocalDate date = datePicker.getValue(); // Retrieve selected date
-                String time = timeComboBox.getValue();
-                System.out.println("Selected time: " + time);
-                if (date != null && time != null) {
-                    createDateTime(date, time); // Call createDateTime with date and time
-                }
+                handleTimeSelection();
             } else if (event.getSource() == datePicker) {
-                LocalDate date = datePicker.getValue();
-                System.out.println("Selected date: " + date);
-                createDateTime(date, timeComboBox.getValue());
+                handleDateSelection();
             }
-
         };
-
-        // Assign the event handler to both timeComboBox and datePicker
         timeComboBox.setOnAction(selectionHandler);
         datePicker.setOnAction(selectionHandler);
-
     }
-
-    private void createDateTime(LocalDate date, String time) {
+    
+    private void handleTimeSelection() {
+        LocalDate date = datePicker.getValue();
+        String time = timeComboBox.getValue();
+        System.out.println("Selected time: " + time);
         if (date != null && time != null) {
-            LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.parse(time));
-            System.out.println("Selected date and time: " + dateTime);
-            LocalDateTime endDateTime = dateTime.plusMinutes(30); // Assuming appointments last for 30 minutes
-            List<Appointment> appointments = appointmentService.getAppointmentsInRange(dateTime, endDateTime);
-            // Handle appointments as needed
-            for (Appointment appointment : appointments) {
-                // Do something with each appointment
-                System.out.println("Appointment: " + appointment);
-            }
-
-        } else {
-            System.out.println("Date or time is not selected.");
+            createDateTime(date, time);
         }
     }
-
-    private void bookAppointment () {
-
-    }
-
     
+    private void handleDateSelection() {
+        LocalDate date = datePicker.getValue();
+        System.out.println("Selected date: " + date);
+        createDateTime(date, timeComboBox.getValue());
+    }
+    
+
+    private void createDateTime(LocalDate date, String time) {
+        if (date == null || time == null) {
+            System.out.println("Date or time is not selected.");
+            return;
+        }
+    
+        LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.parse(time));
+        System.out.println("Selected date and time: " + dateTime);
+        LocalDateTime endDateTime = dateTime.plusMinutes(30); // Assuming appointments last for 30 minutes
+        List<Appointment> appointments = appointmentService.getAppointmentsInRange(dateTime, endDateTime);
+        appointments.forEach(appointment -> System.out.println("Appointment: " + appointment));
+    }
+    
+
+
+
 
 
 }

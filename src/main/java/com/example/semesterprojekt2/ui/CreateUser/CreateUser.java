@@ -44,7 +44,7 @@ public class CreateUser {
     @FXML
     protected void CreateUser(ActionEvent event) throws IOException, SQLException, MessagingException {
         Customer customer = new Customer(name.getText(),email.getText(),phonenumber.getText());
-        NotificationService.mailNotification(1, email.getText(), "Time");
+        NotificationService.userCreatedNotification(email.getText());
         UseCase.AddCustomer(customer);
     }
     @FXML

@@ -72,3 +72,10 @@ This section aims to elaborate on the architecture, methods, and functions emplo
 
 Our project is constructed on solid design patterns and industry best practices, aiming for a robust, scalable, and maintainable outcome. The architectural and methodological decisions are tailored to build a secure and efficient application capable of adapting to evolving requirements while ensuring a clear understanding and easy navigation for developers and stakeholders alike.
 
+## SQL 
+
+### Automatically deletion
+
+In our sql database, we have a procedure called "delete_old_data()" this command can be called directly "CALL delete_old_data()" and it will delete any customer that was created 5 years ago, as well as all child objects using the id
+
+this is used in a Mysql event schedule, that runs once a day. 
