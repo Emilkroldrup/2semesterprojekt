@@ -2,6 +2,7 @@ package com.example.semesterprojekt2.ui.treatment;
 
 import com.example.semesterprojekt2.dao.TreatmentDAO;
 import com.example.semesterprojekt2.model.Treatment;
+import com.example.semesterprojekt2.ui.login.LoginControllerCustomer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,6 +41,8 @@ public class TreatmentController {
     @FXML
     private Scene scene;
 
+    int t = LoginControllerCustomer.id;
+
 
 
     public void backToLogin(ActionEvent event) throws IOException {
@@ -48,6 +51,7 @@ public class TreatmentController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        System.out.println(t);
     }
 
     public void toBookingScene(ActionEvent event) throws IOException {

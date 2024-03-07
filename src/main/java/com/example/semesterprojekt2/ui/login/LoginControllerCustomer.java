@@ -36,7 +36,7 @@ public class LoginControllerCustomer {
     private Scene scene;
 
 
-
+   public static int id;
 
 
     @FXML
@@ -46,6 +46,8 @@ public class LoginControllerCustomer {
         for(Customer c : allCustomers){
             if(LoginUser.getText().equals(c.getPhoneNumber())){
                 PhoneNumberCorrect = true;
+                id = c.getId();
+                System.out.println(id);
                 break;
             }
         }
@@ -55,6 +57,7 @@ public class LoginControllerCustomer {
             stage= (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
+
             stage.show();
         } else{
             System.out.println("No Such Phonenumber Exists In Our System, Pls Check If You Have Typed In The Right Phone Number");
