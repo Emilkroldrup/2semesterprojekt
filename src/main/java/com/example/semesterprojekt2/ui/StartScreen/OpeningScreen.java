@@ -21,6 +21,9 @@ public class OpeningScreen {
     private Label welcomeText;
 
     @FXML
+    private Button Treatment;
+
+    @FXML
     private ImageView Logo;
 
     @FXML
@@ -45,6 +48,15 @@ public class OpeningScreen {
     @FXML
     protected void SwitchSceneCustomerLogin(ActionEvent event) throws IOException {
             root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/Login/LoginCustomer.fxml"));
+        stage= (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene (root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    protected void Treatment(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/com/example/semesterprojekt2/Treatment/Treatmentview.fxml"));
         stage= (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene (root);
         stage.setScene(scene);
